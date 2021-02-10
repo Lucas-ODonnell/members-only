@@ -1,0 +1,28 @@
+<%= form_with model: @post, lcal:true do |form| %>
+  <div>
+    <%= form.label :author, "Author:" %>
+    <%= form.text_field :author %>
+  </div>
+  <br >
+  <div>
+    <%= form.label :title, "Title:" %>
+    <%= form.text_field :title %>
+  </div>
+  <br >
+  <div>
+    <%= form.label :body, "Body:" %>
+    <%= form.text_field :body %>
+  </div>
+  <br >
+  <div>
+    <%= form.submit %>
+  </div>
+  <% if @user.errors.any? %>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>
+
