@@ -46,4 +46,8 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:author, :title, :body)
   end
+
+  def print_multiline(field)
+  field.gsub("\r\n","<br/>").html_safe
+  end
 end

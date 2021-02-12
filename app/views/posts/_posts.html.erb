@@ -4,16 +4,16 @@
       <% if user_signed_in? && current_user.name == post.author %>
         <%= "#{post.author} says" %><br />
         <%= post.title %><br />
-        <%= post.body %><br/>
+        <%= simple_format post.body.strip %>
         <%= link_to 'Edit this Post!', edit_post_path(post), class: "button is-info" %>
-        <%= link_to "Delete", post_path(post), method: :delete, data: {confirm: "Do you want to delete your post?"} %>
+        <%= link_to "Delete", post_path(post), method: :delete, data: {confirm: "Do you want to delete your post?"}, class: "button is-dangerous" %>
       <% elsif user_signed_in? %>
         <%= "#{post.author} says" %><br />
         <%= post.title %><br />
-        <%= post.body %><br/>
+        <%= simple_format post.body %>
       <% else %>
         <%= post.title %><br />
-        <%= post.body %><br/>
+        <%= simple_format post.body %>
       <% end %>
     </div>
     <br >
