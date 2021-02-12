@@ -1,9 +1,17 @@
 <% @posts.each do |post| %>
   <div class="media-content">
     <div class="content">
-      <strong><%= post.author %></strong><br />
-      <strong><%= post.title %></strong/<br />
-      <strong><%= post.body %></strong><br/>
+      <% if user_signed_in? %>
+        <%= "#{post.author} says" %><br />
+        <%= post.title %><br />
+        <%= post.body %><br/>
+        <%= link_to 'Edit this Post!', edit_post_path(post), class: "button is-info" %>
+        <%= link_to "Delete", post_path(post), method: :delete, data: {confirm: "Do you want to delete your post?"} %>
+      <% else %>
+        <%= post.title %><br />
+        <%= post.body %><br/>
+      <% end %>
     </div>
+    <br >
   </div>
 <% end %> 

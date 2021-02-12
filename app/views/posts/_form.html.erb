@@ -17,9 +17,9 @@
   <div>
     <%= form.submit %>
   </div>
-  <% if @user.errors.any? %>
+  <% if @post.errors.any? %>
     <ul>
-      <% @user.errors.full_messages.each do |msg| %>
+      <% @post.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
     </ul>
