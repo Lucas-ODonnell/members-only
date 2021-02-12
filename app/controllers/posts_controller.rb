@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all.order("created_at DESC")
+    @post = Post.new
   end
 
   def show
@@ -28,7 +29,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to edit_post_path
+      redirect_to root_path
     else
       render :edit
     end
@@ -36,7 +37,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @article.destroy
+    @post.destroy
     redirect_to :posts
   end
 
