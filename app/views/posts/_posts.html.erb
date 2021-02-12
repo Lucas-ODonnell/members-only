@@ -1,12 +1,16 @@
 <% @posts.each do |post| %>
   <div class="media-content">
     <div class="content">
-      <% if user_signed_in? %>
+      <% if user_signed_in? && current_user.name == post.author %>
         <%= "#{post.author} says" %><br />
         <%= post.title %><br />
         <%= post.body %><br/>
         <%= link_to 'Edit this Post!', edit_post_path(post), class: "button is-info" %>
         <%= link_to "Delete", post_path(post), method: :delete, data: {confirm: "Do you want to delete your post?"} %>
+      <% elsif user_signed_in? %>
+        <%= "#{post.author} says" %><br />
+        <%= post.title %><br />
+        <%= post.body %><br/>
       <% else %>
         <%= post.title %><br />
         <%= post.body %><br/>
